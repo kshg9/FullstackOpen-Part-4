@@ -1,0 +1,8 @@
+POST http://localhost:3000/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pa2V5IiwiaWQiOiI2Nzc1YjNmZDIyMzE5NzY2NWRjMTdkZGQiLCJpYXQiOjE3MzU4MjEyMDQsImV4cCI6MTczNTgyNDgwNH0.MDLVKlGo2UnHCywpHIOQbdHOFjibc6YkKZcXKekp_UM
+
+{
+  "title": "ssssssssssssslongDDD tale",
+  "url": "example.com"
+}
