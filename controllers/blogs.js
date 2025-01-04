@@ -1,8 +1,6 @@
 const blogsRouter = require('express').Router()
 const Blog = require('../models/blog')
-const User = require('../models/user')
-const jwt = require('jsonwebtoken')
-const {userExtractor} = require('../utils/middleware')
+const { userExtractor } = require('../utils/middleware')
 
 blogsRouter.get('/', async (request, response) => {
   const blogs = await Blog.find({})
@@ -45,7 +43,7 @@ blogsRouter.delete('/:id',userExtractor, async (request, response, next) => {
       await Blog.findByIdAndDelete(request.params.id)
       response.status(200).end()
     }else if (request.user._id.toString() !== blog?.user.toString()){
-      return response.status(403).json({error: 'unauthorized'})
+      return response.status(403).json({ error: 'unauthorized' })
     }
     next()
   } catch (error) {

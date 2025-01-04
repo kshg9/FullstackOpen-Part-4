@@ -12,7 +12,7 @@ describe('when there are initially some blogs saved', () => {
   beforeEach(async () => {
     await Blog.deleteMany({})
     await User.deleteMany({})
-    
+
     const user = await helper.createTestUser()
     const blogsWithUser = helper.initialBlogs.map(blog => ({
       ...blog,
@@ -30,8 +30,8 @@ describe('when there are initially some blogs saved', () => {
 
   describe('addition of a new blog', () => {
     test('succeeds with valid data and token', async () => {
-      const { token, user } = await helper.getUserAndToken()
-      
+      const { token } = await helper.getUserAndToken()
+
       const newBlog = {
         title: 'Test Blog',
         author: 'Tester',
@@ -66,15 +66,15 @@ describe('when there are initially some blogs saved', () => {
 
   describe('deletion of a blog', () => {
     test('succeeds with status code 204 if valid id and token', async () => {
-      const { token, user } = await helper.getUserAndToken()
-      
+      const { token } = await helper.getUserAndToken()
+
       const newBlog = {
         title: 'Test Blog',
         author: 'Tester',
         url: 'http://test.com',
         likes: 0,
       }
-      
+
       const response = await api
         .post('/api/blogs')
         .set('Authorization', `Bearer ${token}`)
@@ -92,8 +92,8 @@ describe('when there are initially some blogs saved', () => {
 
   describe('update of a blog', () => {
     test('succeeds with partial update', async () => {
-      const { token, user } = await helper.getUserAndToken()
-      
+      const { token } = await helper.getUserAndToken()
+
       // Create a blog first
       const newBlog = {
         title: 'Test Blog',
@@ -101,7 +101,7 @@ describe('when there are initially some blogs saved', () => {
         url: 'http://test.com',
         likes: 0
       }
-      
+
       const response = await api
         .post('/api/blogs')
         .set('Authorization', `Bearer ${token}`)

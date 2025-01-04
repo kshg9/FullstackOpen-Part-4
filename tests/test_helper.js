@@ -60,7 +60,7 @@ const getUserAndToken = async () => {
     id: user._id
   }
   const token = jwt.sign(userForToken, process.env.SECRET)
-  return {token, user}
+  return { token, user }
 }
 
 const checkBlogsIncludes = (blogsAtEnd, includedBlog) => {
